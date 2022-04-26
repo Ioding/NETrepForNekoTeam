@@ -52,6 +52,8 @@ namespace mmd
         QVector3D   m_ambient;
         quint8      m_toonIndex;
         quint8      m_edgeFlag;
+        quint32     m_faceVertexCount;
+        PMDString<20> m_textureName;
     };
 
     struct PMDBone
@@ -71,8 +73,8 @@ namespace mmd
         quint16             m_ikTarget;
         quint8              m_numChain;
         quint16             m_numIteration;
-        float               m_rorateLimit;
-        QVector<quint16>    m_chains;
+        float               m_rotateLimit;
+        QVector<quint16>    m_chanins;
     };
 
     struct PMDMorph
@@ -94,7 +96,7 @@ namespace mmd
             Other,
         };
 
-        PMDString<20>   m_morpName;
+        PMDString<20>   m_morphName;
         MorphType       m_morphType;
         VertexList      m_vertices;
         PMDString<20>   m_englishShapeNameExt;
@@ -169,18 +171,18 @@ namespace mmd
 
     struct PMDFile
     {
-        PMDHeader                        m_header;
-        QVector<PMDVertex>            m_vertices;
-        QVector<PMDFace>            m_faces;
-        QVector<PMDMaterial>        m_materials;
-        QVector<PMDBone>            m_bones;
-        QVector<PMDIk>                m_iks;
-        QVector<PMDMorph>            m_morphs;
-        PMDMorphDisplayList                m_morphDisplayList;
-        QVector<PMDBoneDisplayList>    m_boneDisplayLists;
-        std::array<PMDString<100>, 10>    m_toonTextureNames;
-        QVector<PMDRigidBodyExt>    m_rigidBodies;
-        QVector<PMDJointExt>        m_joints;
+        PMDHeader                       m_header;
+        QVector<PMDVertex>              m_vertices;
+        QVector<PMDFace>                m_faces;
+        QVector<PMDMaterial>            m_materials;
+        QVector<PMDBone>                m_bones;
+        QVector<PMDIk>                  m_iks;
+        QVector<PMDMorph>               m_morphs;
+        PMDMorphDisplayList             m_morphDisplayList;
+        QVector<PMDBoneDisplayList>     m_boneDisplayLists;
+        std::array<PMDString<100>, 10>  m_toonTextureNames;
+        QVector<PMDRigidBodyExt>        m_rigidBodies;
+        QVector<PMDJointExt>            m_joints;
     };
 
     bool ReadPMDFile(PMDFile* pmdFile, const char* filename);
